@@ -1,0 +1,10 @@
+C:\Projects\Xceedance\AIG\Development\Turbo1.5\src\PaymentGatewayTestingTool\bin\Debug\PaymentGatewayTestingTool.exe.config
+C:\Projects\Xceedance\AIG\Development\Turbo1.5\src\PaymentGatewayTestingTool\bin\Debug\PaymentGatewayTestingTool.exe
+C:\Projects\Xceedance\AIG\Development\Turbo1.5\src\PaymentGatewayTestingTool\bin\Debug\PaymentGatewayTestingTool.pdb
+C:\Projects\Xceedance\AIG\Development\Turbo1.5\src\PaymentGatewayTestingTool\obj\Debug\PaymentGatewayTestingTool.csprojResolveAssemblyReference.cache
+C:\Projects\Xceedance\AIG\Development\Turbo1.5\src\PaymentGatewayTestingTool\obj\Debug\PaymentGatewayTestingTool.frmHome.resources
+C:\Projects\Xceedance\AIG\Development\Turbo1.5\src\PaymentGatewayTestingTool\obj\Debug\PaymentGatewayTestingTool.Properties.Resources.resources
+C:\Projects\Xceedance\AIG\Development\Turbo1.5\src\PaymentGatewayTestingTool\obj\Debug\PaymentGatewayTestingTool.csproj.GenerateResource.Cache
+C:\Projects\Xceedance\AIG\Development\Turbo1.5\src\PaymentGatewayTestingTool\obj\Debug\PaymentGatewayTestingTool.csproj.CoreCompileInputs.cache
+C:\Projects\Xceedance\AIG\Development\Turbo1.5\src\PaymentGatewayTestingTool\obj\Debug\PaymentGatewayTestingTool.exe
+C:\Projects\Xceedance\AIG\Development\Turbo1.5\src\PaymentGatewayTestingTool\obj\Debug\PaymentGatewayTestingTool.pdb

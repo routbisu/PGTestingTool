@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="https://px.ezidebit.com.au/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:i0="http://tempuri.org/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="PCIService" targetNamespace="https://px.ezidebit.com.au/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="BasicHttpBinding_IPCIService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="https://px.ezidebit.com.au/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/Ezidebit.PaymentExchange.V3_3.DataContracts" />
+      <xs:element name="EditCustomerBankAccount">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="DigitalKey" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="EziDebitCustomerID" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="YourSystemReference" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="BankAccountName" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="BankAccountBSB" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="BankAccountNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="Reactivate" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="EditCustomerBankAccountResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EditCustomerBankAccountResult" nillable="true" type="tns:EziResponseOfstring" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="EziResponseOfstring">
+        <xs:annotation>
+          <xs:appinfo>
+            <GenericType Name="EziResponseOf{0}{#}" Namespace="https://px.ezidebit.com.au/" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+              <GenericParameter Name="string" Namespace="http://www.w3.org/2001/XMLSchema" />
+            </GenericType>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Data" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Error" type="xs:int" />
+          <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="EziResponseOfstring" nillable="true" type="tns:EziResponseOfstring" />
+      <xs:element name="EditCustomerCreditCard">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="DigitalKey" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="EziDebitCustomerID" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="YourSystemReference" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="NameOnCreditCard" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="CreditCardNumber" type="xs:string" />
+            <xs:element minOccurs="1" maxOccurs="1" name="CreditCardExpiryYear" type="xs:int" />
+            <xs:element minOccurs="1" maxOccurs="1" name="CreditCardExpiryMonth" type="xs:int" />
+            <xs:element minOccurs="0" maxOccurs="1" name="Reactivate" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="Username" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="EditCustomerCreditCardResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="EditCustomerCreditCardResult" type="tns:EziResponseOfString" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="EziResponseOfString">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="Error" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Data" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="AddCardDebit">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="DigitalKey" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="YourSystemReference" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="YourGeneralReference" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="MobilePhoneNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="PaymentReference" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="NameOnCreditCard" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="CreditCardNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="CreditCardExpiryYear" type="xs:int" />
+            <xs:element minOccurs="0" name="CreditCardExpiryMonth" type="xs:int" />
+            <xs:element minOccurs="0" name="PaymentAmountInCents" type="xs:long" />
+            <xs:element minOccurs="0" name="DebitDate" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="SmsPaymentReminder" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="SmsFailedNotification" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="SmsExpiredCard" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AddCardDebitResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="AddCardDebitResult" nillable="true" type="tns:EziResponseOfNewCustomerXcXH3liW" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="EziResponseOfNewCustomerXcXH3liW">
+        <xs:annotation>
+          <xs:appinfo>
+            <GenericType Name="EziResponseOf{0}{#}" Namespace="https://px.ezidebit.com.au/" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+              <GenericParameter Name="NewCustomer" Namespace="http://schemas.datacontract.org/2004/07/Ezidebit.PaymentExchange.V3_3.DataContracts" />
+            </GenericType>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Ezidebit.PaymentExchange.V3_3.DataContracts" minOccurs="0" name="Data" nillable="true" type="q1:NewCustomer" />
+          <xs:element minOccurs="0" name="Error" type="xs:int" />
+          <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="EziResponseOfNewCustomerXcXH3liW" nillable="true" type="tns:EziResponseOfNewCustomerXcXH3liW" />
+      <xs:element name="AddBankDebit">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="DigitalKey" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="YourSystemReference" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="YourGeneralReference" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="MobilePhoneNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="PaymentReference" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="BankAccountName" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="BankAccountBSB" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="BankAccountNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="PaymentAmountInCents" type="xs:long" />
+            <xs:element minOccurs="0" name="DebitDate" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="SmsPaymentReminder" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="SmsFailedNotification" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="SmsExpiredCard" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AddBankDebitResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="AddBankDebitResult" nillable="true" type="tns:EziResponseOfNewCustomerXcXH3liW" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ProcessRealtimeCreditCardPayment">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="DigitalKey" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="CreditCardNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="CreditCardExpiryMonth" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="CreditCardExpiryYear" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="CreditCardCCV" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="NameOnCreditCard" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="PaymentAmountInCents" type="xs:long" />
+            <xs:element minOccurs="0" name="CustomerName" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="PaymentReference" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ProcessRealtimeCreditCardPaymentResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ProcessRealtimeCreditCardPaymentResult" nillable="true" type="tns:EziResponseOfRealtimePaymentResponseTHgMB7oL" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="EziResponseOfRealtimePaymentResponseTHgMB7oL">
+        <xs:annotation>
+          <xs:appinfo>
+            <GenericType Name="EziResponseOf{0}{#}" Namespace="https://px.ezidebit.com.au/" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+              <GenericParameter Name="RealtimePaymentResponse" Namespace="https://px.ezidebit.com.au/" />
+            </GenericType>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Data" nillable="true" type="tns:RealtimePaymentResponse" />
+          <xs:element minOccurs="0" name="Error" type="xs:int" />
+          <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="EziResponseOfRealtimePaymentResponseTHgMB7oL" nillable="true" type="tns:EziResponseOfRealtimePaymentResponseTHgMB7oL" />
+      <xs:complexType name="RealtimePaymentResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BankReceiptID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ExchangePaymentID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PaymentResult" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PaymentResultCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PaymentResultText" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="RealtimePaymentResponse" nillable="true" type="tns:RealtimePaymentResponse" />
+      <xs:element name="GetCustomerAccountDetails">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="DigitalKey" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="EzidebitCustomerID" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="YourSystemReference" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetCustomerAccountDetailsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="GetCustomerAccountDetailsResult" nillable="true" type="tns:EziResponseOfAccountDetailsTHgMB7oL" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="EziResponseOfAccountDetailsTHgMB7oL">
+        <xs:annotation>
+          <xs:appinfo>
+            <GenericType Name="EziResponseOf{0}{#}" Namespace="https://px.ezidebit.com.au/" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+              <GenericParameter Name="AccountDetails" Namespace="https://px.ezidebit.com.au/" />
+            </GenericType>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Data" nillable="true" type="tns:AccountDetails" />
+          <xs:element minOccurs="0" name="Error" type="xs:int" />
+          <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="EziResponseOfAccountDetailsTHgMB7oL" nillable="true" type="tns:EziResponseOfAccountDetailsTHgMB7oL" />
+      <xs:complexType name="AccountDetails">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AccountHolderName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="AccountNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BSB" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CardHolderName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CreditCardNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ExpiryMonth" type="xs:int" />
+          <xs:element minOccurs="0" name="ExpiryYear" type="xs:int" />
+          <xs:element minOccurs="0" name="PaymentMethod" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="AccountDetails" nillable="true" type="tns:AccountDetails" />
+      <xs:element name="ProcessRealtimeTokenPayment">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="digitalKey" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="token" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="paymentAmountInCents" type="xs:long" />
+            <xs:element minOccurs="0" name="customerName" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="paymentReference" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ProcessRealtimeTokenPaymentResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ProcessRealtimeTokenPaymentResult" nillable="true" type="tns:EziResponseOfRealtimePaymentResponseTHgMB7oL" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="TestFunction">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="input" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="TestFunctionResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="TestFunctionResult" nillable="true" type="tns:EziResponseOfstring" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="anyType" nillable="true" type="xs:anyType" />
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+      <xs:element name="boolean" nillable="true" type="xs:boolean" />
+      <xs:element name="byte" nillable="true" type="xs:byte" />
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="decimal" nillable="true" type="xs:decimal" />
+      <xs:element name="double" nillable="true" type="xs:double" />
+      <xs:element name="float" nillable="true" type="xs:float" />
+      <xs:element name="int" nillable="true" type="xs:int" />
+      <xs:element name="long" nillable="true" type="xs:long" />
+      <xs:element name="QName" nillable="true" type="xs:QName" />
+      <xs:element name="short" nillable="true" type="xs:short" />
+      <xs:element name="string" nillable="true" type="xs:string" />
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+      <xs:element name="char" nillable="true" type="tns:char" />
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int" />
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration" />
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid" />
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName" />
+      <xs:attribute name="Id" type="xs:ID" />
+      <xs:attribute name="Ref" type="xs:IDREF" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Ezidebit.PaymentExchange.V3_3.DataContracts" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Ezidebit.PaymentExchange.V3_3.DataContracts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="NewCustomer">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CustomerRef" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="NewCustomer" nillable="true" type="tns:NewCustomer" />
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="IPCIService_EditCustomerBankAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditCustomerBankAccount" />
+  </wsdl:message>
+  <wsdl:message name="IPCIService_EditCustomerBankAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditCustomerBankAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPCIService_EditCustomerCreditCard_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditCustomerCreditCard" />
+  </wsdl:message>
+  <wsdl:message name="IPCIService_EditCustomerCreditCard_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditCustomerCreditCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPCIService_AddCardDebit_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddCardDebit" />
+  </wsdl:message>
+  <wsdl:message name="IPCIService_AddCardDebit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddCardDebitResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPCIService_AddBankDebit_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddBankDebit" />
+  </wsdl:message>
+  <wsdl:message name="IPCIService_AddBankDebit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddBankDebitResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPCIService_ProcessRealtimeCreditCardPayment_InputMessage">
+    <wsdl:part name="parameters" element="tns:ProcessRealtimeCreditCardPayment" />
+  </wsdl:message>
+  <wsdl:message name="IPCIService_ProcessRealtimeCreditCardPayment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProcessRealtimeCreditCardPaymentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPCIService_GetCustomerAccountDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerAccountDetails" />
+  </wsdl:message>
+  <wsdl:message name="IPCIService_GetCustomerAccountDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerAccountDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPCIService_ProcessRealtimeTokenPayment_InputMessage">
+    <wsdl:part name="parameters" element="tns:ProcessRealtimeTokenPayment" />
+  </wsdl:message>
+  <wsdl:message name="IPCIService_ProcessRealtimeTokenPayment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProcessRealtimeTokenPaymentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPCIService_TestFunction_InputMessage">
+    <wsdl:part name="parameters" element="tns:TestFunction" />
+  </wsdl:message>
+  <wsdl:message name="IPCIService_TestFunction_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TestFunctionResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IPCIService">
+    <wsdl:operation name="EditCustomerBankAccount">
+      <wsdl:input wsaw:Action="https://px.ezidebit.com.au/IPCIService/EditCustomerBankAccount" message="tns:IPCIService_EditCustomerBankAccount_InputMessage" />
+      <wsdl:output wsaw:Action="https://px.ezidebit.com.au/IPCIService/EditCustomerBankAccountResponse" message="tns:IPCIService_EditCustomerBankAccount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditCustomerCreditCard">
+      <wsdl:input wsaw:Action="https://px.ezidebit.com.au/IPCIService/EditCustomerCreditCard" message="tns:IPCIService_EditCustomerCreditCard_InputMessage" />
+      <wsdl:output wsaw:Action="https://px.ezidebit.com.au/IPCIService/EditCustomerCreditCardResponse" message="tns:IPCIService_EditCustomerCreditCard_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddCardDebit">
+      <wsdl:input wsaw:Action="https://px.ezidebit.com.au/IPCIService/AddCardDebit" message="tns:IPCIService_AddCardDebit_InputMessage" />
+      <wsdl:output wsaw:Action="https://px.ezidebit.com.au/IPCIService/AddCardDebitResponse" message="tns:IPCIService_AddCardDebit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddBankDebit">
+      <wsdl:input wsaw:Action="https://px.ezidebit.com.au/IPCIService/AddBankDebit" message="tns:IPCIService_AddBankDebit_InputMessage" />
+      <wsdl:output wsaw:Action="https://px.ezidebit.com.au/IPCIService/AddBankDebitResponse" message="tns:IPCIService_AddBankDebit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ProcessRealtimeCreditCardPayment">
+      <wsdl:input wsaw:Action="https://px.ezidebit.com.au/IPCIService/ProcessRealtimeCreditCardPayment" message="tns:IPCIService_ProcessRealtimeCreditCardPayment_InputMessage" />
+      <wsdl:output wsaw:Action="https://px.ezidebit.com.au/IPCIService/ProcessRealtimeCreditCardPaymentResponse" message="tns:IPCIService_ProcessRealtimeCreditCardPayment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerAccountDetails">
+      <wsdl:input wsaw:Action="https://px.ezidebit.com.au/IPCIService/GetCustomerAccountDetails" message="tns:IPCIService_GetCustomerAccountDetails_InputMessage" />
+      <wsdl:output wsaw:Action="https://px.ezidebit.com.au/IPCIService/GetCustomerAccountDetailsResponse" message="tns:IPCIService_GetCustomerAccountDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ProcessRealtimeTokenPayment">
+      <wsdl:input wsaw:Action="https://px.ezidebit.com.au/IPCIService/ProcessRealtimeTokenPayment" message="tns:IPCIService_ProcessRealtimeTokenPayment_InputMessage" />
+      <wsdl:output wsaw:Action="https://px.ezidebit.com.au/IPCIService/ProcessRealtimeTokenPaymentResponse" message="tns:IPCIService_ProcessRealtimeTokenPayment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TestFunction">
+      <wsdl:input wsaw:Action="https://px.ezidebit.com.au/IPCIService/TestFunction" message="tns:IPCIService_TestFunction_InputMessage" />
+      <wsdl:output wsaw:Action="https://px.ezidebit.com.au/IPCIService/TestFunctionResponse" message="tns:IPCIService_TestFunction_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IPCIService" type="tns:IPCIService">
+    <wsp:PolicyReference URI="#BasicHttpBinding_IPCIService_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="EditCustomerBankAccount">
+      <soap:operation soapAction="https://px.ezidebit.com.au/IPCIService/EditCustomerBankAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditCustomerCreditCard">
+      <soap:operation soapAction="https://px.ezidebit.com.au/IPCIService/EditCustomerCreditCard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCardDebit">
+      <soap:operation soapAction="https://px.ezidebit.com.au/IPCIService/AddCardDebit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddBankDebit">
+      <soap:operation soapAction="https://px.ezidebit.com.au/IPCIService/AddBankDebit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessRealtimeCreditCardPayment">
+      <soap:operation soapAction="https://px.ezidebit.com.au/IPCIService/ProcessRealtimeCreditCardPayment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerAccountDetails">
+      <soap:operation soapAction="https://px.ezidebit.com.au/IPCIService/GetCustomerAccountDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessRealtimeTokenPayment">
+      <soap:operation soapAction="https://px.ezidebit.com.au/IPCIService/ProcessRealtimeTokenPayment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestFunction">
+      <soap:operation soapAction="https://px.ezidebit.com.au/IPCIService/TestFunction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PCIService">
+    <wsdl:port name="BasicHttpBinding_IPCIService" binding="tns:BasicHttpBinding_IPCIService">
+      <soap:address location="https://api.demo.ezidebit.com.au/v3-5/pci" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
