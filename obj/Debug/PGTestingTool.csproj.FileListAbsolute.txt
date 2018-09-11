@@ -14,7 +14,6 @@ C:\Projects\Xceedance\AIG\Development\Turbo1.5\src\PaymentGatewayTestingTool\bin
 D:\Projects\Xceedance\PaymentGatewayTestingTool\PaymentGatewayTestingTool\bin\Debug\PaymentGatewayTestingTool.exe.config
 D:\Projects\Xceedance\PaymentGatewayTestingTool\PaymentGatewayTestingTool\bin\Debug\PaymentGatewayTestingTool.exe
 D:\Projects\Xceedance\PaymentGatewayTestingTool\PaymentGatewayTestingTool\bin\Debug\PaymentGatewayTestingTool.pdb
-D:\Projects\Xceedance\PaymentGatewayTestingTool\PaymentGatewayTestingTool\bin\Debug\Newtonsoft.Json.xml
 D:\Projects\Xceedance\PaymentGatewayTestingTool\PaymentGatewayTestingTool\obj\Debug\PGTestingTool.csprojAssemblyReference.cache
 D:\Projects\Xceedance\PaymentGatewayTestingTool\PaymentGatewayTestingTool\obj\Debug\PaymentGatewayTestingTool.frmHome.resources
 D:\Projects\Xceedance\PaymentGatewayTestingTool\PaymentGatewayTestingTool\obj\Debug\PaymentGatewayTestingTool.frmOutput.resources

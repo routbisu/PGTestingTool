@@ -28,6 +28,7 @@ namespace PaymentGatewayTestingTool
 
         public static string outputData;
         public static string outputDataJSON;
+        public dynamic returnData = String.Empty;
 
         public void OpenConnection()
         {
@@ -187,13 +188,13 @@ namespace PaymentGatewayTestingTool
             }
         }
 
-        private async void btnFetchData_Click(object sender, EventArgs e)
+        private void btnFetchData_Click(object sender, EventArgs e)
         {
             try
             {
                 OpenConnection();
 
-                //object returnData = null;
+                
 
                 string inputText = txtInputs.Text;
                 string[] inputs = inputText.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
@@ -211,13 +212,46 @@ namespace PaymentGatewayTestingTool
                     }
                 }
 
-                // Make the PG Call
+                // Make the Payment Gateway Call
                 if(_operationType == OperationType.NonPCI)
                 {
                     switch(_actionType)
-                    {
+                    { 
+                        case ActionType.ProcessRefund:
+                            returnData = _pgAPIReference.ProcessRefund(_digitalKey,
+                                inputValues[0],
+                                inputValues[1],
+                                Convert.ToInt64(inputValues[2])
+                            );
+                            populateResult<Ezidebit.EziResponseOfRefundPaymentTHgMB7oL>();
+                            break;                       
+
+                        case ActionType.AddPayment:
+                            returnData = _pgAPIReference.AddPayment(_digitalKey,
+                                inputValues[0],
+                                inputValues[1],
+                                inputValues[2],
+                                Convert.ToInt64(inputValues[3]),
+                                inputValues[4],
+                                inputValues[5]
+                            );
+                            populateResult<Ezidebit.EziResponseOfstring>();
+                            break;
+
+                        case ActionType.DeletePayment:
+                            returnData = _pgAPIReference.DeletePayment(_digitalKey,
+                                inputValues[0],
+                                inputValues[1],
+                                inputValues[2],
+                                inputValues[3],
+                                Convert.ToInt64(inputValues[4]),
+                                inputValues[5]
+                            );
+                            populateResult<Ezidebit.EziResponseOfstring>();
+                            break;
+
                         case ActionType.GetPayments:
-                            Task<Ezidebit.EziResponseOfArrayOfPaymentTHgMB7oL> returnData = _pgAPIReference.GetPaymentsAsync(_digitalKey,
+                            returnData = _pgAPIReference.GetPayments(_digitalKey,
                                 inputValues[0],
                                 inputValues[1],
                                 inputValues[2],
@@ -227,33 +261,79 @@ namespace PaymentGatewayTestingTool
                                 inputValues[6],
                                 inputValues[7],
                                 inputValues[8]
-                           );
-                            
-                            Ezidebit.EziResponseOfArrayOfPaymentTHgMB7oL finalOutput = await returnData;
-                            outputData = Serialize<Ezidebit.EziResponseOfArrayOfPaymentTHgMB7oL>(finalOutput);
-                            outputDataJSON = new JavaScriptSerializer().Serialize(finalOutput);
+                            );
+
+                            populateResult<Ezidebit.EziResponseOfArrayOfPaymentTHgMB7oL>();
                             break;
 
                         case ActionType.GetPaymentStatus:
-                            Task<Ezidebit.EziResponseOfstring> returnData0 = _pgAPIReference.GetPaymentStatusAsync(_digitalKey,
-                                inputValues[0]
-                           );
+                            // Task<Ezidebit.EziResponseOfstring> returnData0 = _pgAPIReference.GetPaymentStatusAsync(_digitalKey,
+                            //     inputValues[0]
+                            //);
 
-                            Ezidebit.EziResponseOfstring finalOutput0 = await returnData0;
-                            outputData = Serialize<Ezidebit.EziResponseOfstring>(finalOutput0);
-                            outputDataJSON = new JavaScriptSerializer().Serialize(finalOutput0);
+                            // Ezidebit.EziResponseOfstring finalOutput0 = await returnData0;
+                            // outputData = Serialize<Ezidebit.EziResponseOfstring>(finalOutput0);
+                            // outputDataJSON = new JavaScriptSerializer().Serialize(finalOutput0);
+                            // break;
+                            returnData = _pgAPIReference.GetPaymentStatus(_digitalKey, inputValues[0]);
+                            populateResult<Ezidebit.EziResponseOfstring>();
                             break;
 
-                        case ActionType.ProcessRefund:
-                            Task<Ezidebit.EziResponseOfRefundPaymentTHgMB7oL> returnData1 = _pgAPIReference.ProcessRefundAsync(_digitalKey,
+                        case ActionType.GetPaymentDetail:
+                            returnData = _pgAPIReference.GetPaymentStatus(_digitalKey, inputValues[0]);
+                            populateResult<Ezidebit.EziResponseOfstring>();
+                            break;
+
+                        case ActionType.GetScheduledPayments:
+                            returnData = _pgAPIReference.GetScheduledPayments(_digitalKey,
                                 inputValues[0],
                                 inputValues[1],
-                                Convert.ToInt64(inputValues[2])
-                           );
+                                inputValues[2],
+                                inputValues[3]
+                            );
 
-                            Ezidebit.EziResponseOfRefundPaymentTHgMB7oL finalOutput1 = await returnData1;
-                             outputData = Serialize<Ezidebit.EziResponseOfRefundPaymentTHgMB7oL>(finalOutput1);
-                            outputDataJSON = new JavaScriptSerializer().Serialize(finalOutput1);
+                            populateResult<Ezidebit.EziResponseOfArrayOfScheduledPaymentTHgMB7oL>();
+                            break;
+
+                    }
+                }
+                else if(_operationType == OperationType.PCI)
+                {
+                    switch (_actionType)
+                    {
+                        case ActionType.EditCustomerBankAccount:
+                            returnData = _pgAPIReferencePCI.EditCustomerBankAccount(_digitalKey,
+                                inputValues[0],
+                                inputValues[1],
+                                inputValues[2],
+                                inputValues[3],
+                                inputValues[4],
+                                inputValues[5],
+                                inputValues[6]
+                            );
+                            populateResult<EzidebitPCI.EziResponseOfstring>();
+                            break;
+
+                        case ActionType.EditCustomerCreditCard:
+                            returnData = _pgAPIReferencePCI.EditCustomerCreditCard(_digitalKey,
+                                inputValues[0],
+                                inputValues[1],
+                                inputValues[2],
+                                inputValues[3],
+                                Convert.ToInt32(inputValues[4]),
+                                Convert.ToInt32(inputValues[5]),
+                                inputValues[6],
+                                inputValues[7]
+                            );
+                            populateResult<EzidebitPCI.EziResponseOfString1>();
+                            break;
+
+                        case ActionType.GetCustomerAccountDetails:
+                            returnData = _pgAPIReferencePCI.GetCustomerAccountDetails(_digitalKey,
+                                inputValues[0],
+                                inputValues[1]
+                            );
+                            populateResult<EzidebitPCI.EziResponseOfAccountDetailsTHgMB7oL>();
                             break;
                     }
                 }
@@ -285,6 +365,25 @@ namespace PaymentGatewayTestingTool
             {
                 throw;
             }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txtInputs.Text = string.Empty;
+        }
+
+        private void populateResult<T>()
+        {
+            if(returnData != null)
+            {
+                outputData = Serialize<T>(returnData);
+                outputDataJSON = new JavaScriptSerializer().Serialize(returnData);
+            }
+            else
+            {
+                MessageBox.Show("No Results Found", "No results", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            
         }
     }
 }

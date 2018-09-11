@@ -19,6 +19,7 @@ namespace PaymentGatewayTestingTool.BusinessLogic
         public Common()
         {
             // Add all non pci operations
+            #region NonPCI Operations
             _nonPCIOperations = new List<Operation>();
             _pCIOperations = new List<Operation>();
 
@@ -64,6 +65,117 @@ namespace PaymentGatewayTestingTool.BusinessLogic
                     "RefundAmountInCents (Required)"
                 }
             });
+
+            _nonPCIOperations.Add(new Operation
+            {
+                OperationType = OperationType.NonPCI,
+                Action = ActionType.GetPaymentDetail,
+                HelpLink = "https://www.getpayments.com/docs/#getpaymentdetail",
+                InputColumns = new List<string>
+                {
+                    "PaymentReference (Required)"
+                }
+            });
+
+            _nonPCIOperations.Add(new Operation
+            {
+                OperationType = OperationType.NonPCI,
+                Action = ActionType.AddPayment,
+                HelpLink = "https://www.getpayments.com/docs/#addpayment",
+                InputColumns = new List<string>
+                {
+                    "EziDebitCustomerID (Either)",
+                    "YourSystemReference (Either)",
+                    "DebitDate (Required)",
+                    "PaymentAmountInCents (Required)",
+                    "PaymentReference",
+                    "Username"
+                }
+            });
+
+            _nonPCIOperations.Add(new Operation
+            {
+                OperationType = OperationType.NonPCI,
+                Action = ActionType.DeletePayment,
+                HelpLink = "https://www.getpayments.com/docs/#deletepayment",
+                InputColumns = new List<string>
+                {
+                    "EziDebitCustomerID (Either)",
+                    "YourSystemReference (Either)",
+                    "PaymentReference",
+                    "DebitDate",
+                    "PaymentAmountInCents (Required)",
+                    "Username"
+                }
+            });
+
+            _nonPCIOperations.Add(new Operation
+            {
+                OperationType = OperationType.NonPCI,
+                Action = ActionType.GetScheduledPayments,
+                HelpLink = "https://www.getpayments.com/docs/#getscheduledpayments",
+                InputColumns = new List<string>
+                {
+                    "DateFrom",
+                    "DateTo",
+                    "EziDebitCustomerID (Either)",
+                    "YourSystemReference (Either)"
+                }
+            });
+
+            #endregion
+
+
+
+
+            #region PCI Operations
+            _pCIOperations.Add(new Operation
+            {
+                OperationType = OperationType.PCI,
+                Action = ActionType.EditCustomerBankAccount,
+                HelpLink = "https://www.getpayments.com/docs/#editcustomerbankaccount",
+                InputColumns = new List<string>
+                {
+                    "EziDebitCustomerID (Either)",
+                    "YourSystemReference (Either)",
+                    "BankAccountName (Required)",
+                    "BankAccountBSB (Required)",
+                    "BankAccountNumber (Required)",
+                    "Reactivate",
+                    "Username"
+                }
+            });
+
+            _pCIOperations.Add(new Operation
+            {
+                OperationType = OperationType.PCI,
+                Action = ActionType.EditCustomerCreditCard,
+                HelpLink = "https://www.getpayments.com/docs/#editcustomercreditcard",
+                InputColumns = new List<string>
+                {
+                    "EziDebitCustomerID (Either)",
+                    "YourSystemReference (Either)",
+                    "NameOnCreditCard (Required)",
+                    "CreditCardNumber (Required)",
+                    "CreditCardExpiryYear (Required)",
+                    "CreditCardExpiryMonth (Required)",
+                    "Reactivate (Required)",
+                    "Username"
+                }
+            });
+
+            _pCIOperations.Add(new Operation
+            {
+                OperationType = OperationType.PCI,
+                Action = ActionType.GetCustomerAccountDetails,
+                HelpLink = "https://www.getpayments.com/docs/#getcustomeraccountdetails",
+                InputColumns = new List<string>
+                {
+                    "EziDebitCustomerID (Either)",
+                    "YourSystemReference (Either)"
+                }
+            });
+            #endregion
         }
 
         public static void HighlightRTF(RichTextBox rtb)
@@ -182,22 +294,36 @@ namespace PaymentGatewayTestingTool.BusinessLogic
 
         public static string JsonPrettify(string json)
         {
-            using (var stringReader = new StringReader(json))
-            using (var stringWriter = new StringWriter())
+            try
             {
-                var jsonReader = new JsonTextReader(stringReader);
-                var jsonWriter = new JsonTextWriter(stringWriter) { Formatting = Newtonsoft.Json.Formatting.Indented };
-                jsonWriter.WriteToken(jsonReader);
-                return stringWriter.ToString();
+                using (var stringReader = new StringReader(json))
+                using (var stringWriter = new StringWriter())
+                {
+                    var jsonReader = new JsonTextReader(stringReader);
+                    var jsonWriter = new JsonTextWriter(stringWriter) { Formatting = Newtonsoft.Json.Formatting.Indented };
+                    jsonWriter.WriteToken(jsonReader);
+                    return stringWriter.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
             }
         }
     }
 
     public enum ActionType
     {
+        EditCustomerBankAccount,
+        EditCustomerCreditCard,
+        GetCustomerAccountDetails,
         GetPayments,
         GetPaymentStatus,
-        ProcessRefund
+        GetPaymentDetail,
+        ProcessRefund,
+        AddPayment,
+        DeletePayment,
+        GetScheduledPayments
     }
 
     public enum OperationType

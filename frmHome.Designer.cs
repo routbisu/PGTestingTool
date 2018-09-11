@@ -39,6 +39,7 @@
             this.btnFetchData = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.llAPIReference = new System.Windows.Forms.LinkLabel();
+            this.btnClear = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,7 +61,6 @@
             this.radioNonPCI.Name = "radioNonPCI";
             this.radioNonPCI.Size = new System.Drawing.Size(90, 17);
             this.radioNonPCI.TabIndex = 1;
-            this.radioNonPCI.TabStop = true;
             this.radioNonPCI.Text = "Non PCI Ops";
             this.radioNonPCI.UseVisualStyleBackColor = true;
             this.radioNonPCI.CheckedChanged += new System.EventHandler(this.radioNonPCI_CheckedChanged);
@@ -72,7 +72,6 @@
             this.radioPCI.Name = "radioPCI";
             this.radioPCI.Size = new System.Drawing.Size(65, 17);
             this.radioPCI.TabIndex = 0;
-            this.radioPCI.TabStop = true;
             this.radioPCI.Text = "PCI Ops";
             this.radioPCI.UseVisualStyleBackColor = true;
             this.radioPCI.CheckedChanged += new System.EventHandler(this.radioPCI_CheckedChanged);
@@ -83,7 +82,7 @@
             this.cbOperations.FormattingEnabled = true;
             this.cbOperations.Location = new System.Drawing.Point(292, 40);
             this.cbOperations.Name = "cbOperations";
-            this.cbOperations.Size = new System.Drawing.Size(328, 25);
+            this.cbOperations.Size = new System.Drawing.Size(280, 25);
             this.cbOperations.TabIndex = 1;
             this.cbOperations.SelectedIndexChanged += new System.EventHandler(this.cbOperations_SelectedIndexChanged);
             // 
@@ -113,7 +112,7 @@
             this.txtInputs.Location = new System.Drawing.Point(292, 79);
             this.txtInputs.Multiline = true;
             this.txtInputs.Name = "txtInputs";
-            this.txtInputs.Size = new System.Drawing.Size(452, 341);
+            this.txtInputs.Size = new System.Drawing.Size(462, 341);
             this.txtInputs.TabIndex = 4;
             // 
             // btnFetchColumns
@@ -123,7 +122,7 @@
             this.btnFetchColumns.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFetchColumns.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFetchColumns.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnFetchColumns.Location = new System.Drawing.Point(626, 39);
+            this.btnFetchColumns.Location = new System.Drawing.Point(577, 39);
             this.btnFetchColumns.Name = "btnFetchColumns";
             this.btnFetchColumns.Size = new System.Drawing.Size(118, 27);
             this.btnFetchColumns.TabIndex = 5;
@@ -138,7 +137,7 @@
             this.btnFetchData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFetchData.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFetchData.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnFetchData.Location = new System.Drawing.Point(506, 428);
+            this.btnFetchData.Location = new System.Drawing.Point(516, 428);
             this.btnFetchData.Name = "btnFetchData";
             this.btnFetchData.Size = new System.Drawing.Size(238, 33);
             this.btnFetchData.TabIndex = 6;
@@ -149,7 +148,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(193, 431);
+            this.label2.Location = new System.Drawing.Point(203, 431);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(309, 26);
             this.label2.TabIndex = 7;
@@ -168,12 +167,27 @@
             this.llAPIReference.Text = "API Reference";
             this.llAPIReference.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llAPIReference_LinkClicked);
             // 
+            // btnClear
+            // 
+            this.btnClear.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClear.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnClear.Location = new System.Drawing.Point(698, 39);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(56, 27);
+            this.btnClear.TabIndex = 9;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
             // frmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(755, 473);
+            this.ClientSize = new System.Drawing.Size(766, 473);
+            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.llAPIReference);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnFetchData);
@@ -208,6 +222,7 @@
         private System.Windows.Forms.Button btnFetchData;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.LinkLabel llAPIReference;
+        private System.Windows.Forms.Button btnClear;
     }
 }
 
