@@ -291,8 +291,62 @@ namespace PaymentGatewayTestingTool
                                 inputValues[2],
                                 inputValues[3]
                             );
-
                             populateResult<Ezidebit.EziResponseOfArrayOfScheduledPaymentTHgMB7oL>();
+                            break;
+
+                        case ActionType.ChangeCustomerStatus:
+                            returnData = _pgAPIReference.ChangeCustomerStatus(_digitalKey,
+                                inputValues[0],
+                                inputValues[1],
+                                inputValues[2],
+                                inputValues[3]
+                            );
+                            populateResult<Ezidebit.EziResponseOfstring>();
+                            break;
+
+                        case ActionType.EditCustomerDetails:
+                            returnData = _pgAPIReference.EditCustomerDetails(_digitalKey,
+                                inputValues[0],
+                                inputValues[1],
+                                inputValues[2],
+                                inputValues[3],
+                                inputValues[4],
+                                inputValues[5],
+                                inputValues[6],
+                                inputValues[7],
+                                inputValues[8],
+                                inputValues[9],
+                                inputValues[10],
+                                inputValues[11],
+                                inputValues[12],
+                                inputValues[13],
+                                inputValues[14],
+                                inputValues[15],
+                                inputValues[16]
+                            );
+                            populateResult<Ezidebit.EziResponseOfstring>();
+                            break;
+
+                        case ActionType.GetCustomerFees:
+                            returnData = _pgAPIReference.GetCustomerFees(_digitalKey,
+                                inputValues[0],
+                                inputValues[1],
+                                inputValues[2],
+                                inputValues[3]
+                            );
+                            populateResult<Ezidebit.EziResponseOfArrayOfCustomerFeeTHgMB7oL>();
+                            break;
+
+                        case ActionType.GetCustomerList:
+                            returnData = _pgAPIReference.GetCustomerList(_digitalKey,
+                                inputValues[0],
+                                inputValues[1],
+                                inputValues[2],
+                                inputValues[3],
+                                inputValues[4],
+                                inputValues[5]
+                            );
+                            populateResult<Ezidebit.EziResponseOfArrayOfCustomerTHgMB7oL>();
                             break;
 
                     }

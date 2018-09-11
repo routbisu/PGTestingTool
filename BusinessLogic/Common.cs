@@ -123,6 +123,89 @@ namespace PaymentGatewayTestingTool.BusinessLogic
                 }
             });
 
+            _nonPCIOperations.Add(new Operation
+            {
+                OperationType = OperationType.NonPCI,
+                Action = ActionType.ChangeCustomerStatus,
+                HelpLink = "https://www.getpayments.com/docs/#changecustomerstatus",
+                InputColumns = new List<string>
+                {
+                    "EziDebitCustomerID (Either)",
+                    "YourSystemReference (Either)",
+                    "NewStatus (Required)",
+                    "Username"
+                }
+            });
+
+            _nonPCIOperations.Add(new Operation
+            {
+                OperationType = OperationType.NonPCI,
+                Action = ActionType.EditCustomerDetails,
+                HelpLink = "https://www.getpayments.com/docs/#editcustomerdetails",
+                InputColumns = new List<string>
+                {
+                    "EziDebitCustomerID (Either)",
+                    "YourSystemReference (Either)",
+                    "NewYourSystemReference",
+                    "YourGeneralReference",
+                    "LastName (Required)",
+                    "FirstName",
+                    "AddressLine1",
+                    "AddressLine2",
+                    "AddressSuburb",
+                    "AddressPostCode",
+                    "AddressState",
+                    "EmailAddress",
+                    "MobilePhoneNumber",
+                    "SmsPaymentReminder (Required)",
+                    "SmsFailedNotification (Required)",
+                    "SmsExpiredCard (Required)",
+                    "Username"
+                }
+            });
+
+            _nonPCIOperations.Add(new Operation
+            {
+                OperationType = OperationType.NonPCI,
+                Action = ActionType.GetCustomerDetails,
+                HelpLink = "https://www.getpayments.com/docs/#getcustomerdetails",
+                InputColumns = new List<string>
+                {
+                    "EziDebitCustomerID (Either)",
+                    "YourSystemReference (Either)"
+                }
+            });
+
+            _nonPCIOperations.Add(new Operation
+            {
+                OperationType = OperationType.NonPCI,
+                Action = ActionType.GetCustomerFees,
+                HelpLink = "https://www.getpayments.com/docs/#getcustomerfees",
+                InputColumns = new List<string>
+                {
+                    "EziDebitCustomerID (Either)",
+                    "YourSystemReference (Either)",
+                    "PaymentSource (Required)",
+                    "Username"
+                }
+            });
+
+            _nonPCIOperations.Add(new Operation
+            {
+                OperationType = OperationType.NonPCI,
+                Action = ActionType.GetCustomerList,
+                HelpLink = "https://www.getpayments.com/docs/#getcustomerlist",
+                InputColumns = new List<string>
+                {
+                    "EziDebitCustomerID (Either)",
+                    "YourSystemReference (Either)",
+                    "CustomerStatus (Required)",
+                    "OrderBy",
+                    "Order",
+                    "PageNumber (Required)"
+                }
+            });
+
             #endregion
 
 
@@ -323,7 +406,12 @@ namespace PaymentGatewayTestingTool.BusinessLogic
         ProcessRefund,
         AddPayment,
         DeletePayment,
-        GetScheduledPayments
+        GetScheduledPayments,
+        ChangeCustomerStatus,
+        EditCustomerDetails,
+        GetCustomerDetails,
+        GetCustomerFees,
+        GetCustomerList
     }
 
     public enum OperationType
