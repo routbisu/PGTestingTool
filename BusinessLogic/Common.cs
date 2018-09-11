@@ -85,7 +85,7 @@ namespace PaymentGatewayTestingTool.BusinessLogic
                 InputColumns = new List<string>
                 {
                     "EziDebitCustomerID (Either)",
-                    "YourSystemReference (Either)",
+                    "YourSystemReference (Policy Num) (Either)",
                     "DebitDate (Required)",
                     "PaymentAmountInCents (Required)",
                     "PaymentReference",
@@ -101,7 +101,7 @@ namespace PaymentGatewayTestingTool.BusinessLogic
                 InputColumns = new List<string>
                 {
                     "EziDebitCustomerID (Either)",
-                    "YourSystemReference (Either)",
+                    "YourSystemReference (Policy Num) (Either)",
                     "PaymentReference",
                     "DebitDate",
                     "PaymentAmountInCents (Required)",
@@ -119,7 +119,7 @@ namespace PaymentGatewayTestingTool.BusinessLogic
                     "DateFrom",
                     "DateTo",
                     "EziDebitCustomerID (Either)",
-                    "YourSystemReference (Either)"
+                    "YourSystemReference (Policy Num) (Either)"
                 }
             });
 
@@ -131,7 +131,7 @@ namespace PaymentGatewayTestingTool.BusinessLogic
                 InputColumns = new List<string>
                 {
                     "EziDebitCustomerID (Either)",
-                    "YourSystemReference (Either)",
+                    "YourSystemReference (Policy Num) (Either)",
                     "NewStatus (Required)",
                     "Username"
                 }
@@ -145,7 +145,7 @@ namespace PaymentGatewayTestingTool.BusinessLogic
                 InputColumns = new List<string>
                 {
                     "EziDebitCustomerID (Either)",
-                    "YourSystemReference (Either)",
+                    "YourSystemReference (Policy Num) (Either)",
                     "NewYourSystemReference",
                     "YourGeneralReference",
                     "LastName (Required)",
@@ -172,7 +172,7 @@ namespace PaymentGatewayTestingTool.BusinessLogic
                 InputColumns = new List<string>
                 {
                     "EziDebitCustomerID (Either)",
-                    "YourSystemReference (Either)"
+                    "YourSystemReference (Policy Num) (Either)"
                 }
             });
 
@@ -184,7 +184,7 @@ namespace PaymentGatewayTestingTool.BusinessLogic
                 InputColumns = new List<string>
                 {
                     "EziDebitCustomerID (Either)",
-                    "YourSystemReference (Either)",
+                    "YourSystemReference (Policy Num) (Either)",
                     "PaymentSource (Required)",
                     "Username"
                 }
@@ -198,7 +198,7 @@ namespace PaymentGatewayTestingTool.BusinessLogic
                 InputColumns = new List<string>
                 {
                     "EziDebitCustomerID (Either)",
-                    "YourSystemReference (Either)",
+                    "YourSystemReference (Policy Num) (Either)",
                     "CustomerStatus (Required)",
                     "OrderBy",
                     "Order",
@@ -220,7 +220,7 @@ namespace PaymentGatewayTestingTool.BusinessLogic
                 InputColumns = new List<string>
                 {
                     "EziDebitCustomerID (Either)",
-                    "YourSystemReference (Either)",
+                    "YourSystemReference (Policy Num) (Either)",
                     "BankAccountName (Required)",
                     "BankAccountBSB (Required)",
                     "BankAccountNumber (Required)",
@@ -237,7 +237,7 @@ namespace PaymentGatewayTestingTool.BusinessLogic
                 InputColumns = new List<string>
                 {
                     "EziDebitCustomerID (Either)",
-                    "YourSystemReference (Either)",
+                    "YourSystemReference (Policy Num) (Either)",
                     "NameOnCreditCard (Required)",
                     "CreditCardNumber (Required)",
                     "CreditCardExpiryYear (Required)",
@@ -255,7 +255,7 @@ namespace PaymentGatewayTestingTool.BusinessLogic
                 InputColumns = new List<string>
                 {
                     "EziDebitCustomerID (Either)",
-                    "YourSystemReference (Either)"
+                    "YourSystemReference (Policy Num) (Either)"
                 }
             });
             #endregion

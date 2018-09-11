@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOutput));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rbXML = new System.Windows.Forms.RadioButton();
             this.rbJSON = new System.Windows.Forms.RadioButton();
@@ -103,6 +104,7 @@
             this.Controls.Add(this.txtOutputData);
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmOutput";
             this.Text = "Payment Gateway Output";
             this.groupBox1.ResumeLayout(false);

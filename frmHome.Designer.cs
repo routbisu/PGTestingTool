@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHome));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radioNonPCI = new System.Windows.Forms.RadioButton();
             this.radioPCI = new System.Windows.Forms.RadioButton();
@@ -137,9 +138,9 @@
             this.btnFetchData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFetchData.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFetchData.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnFetchData.Location = new System.Drawing.Point(516, 428);
+            this.btnFetchData.Location = new System.Drawing.Point(643, 428);
             this.btnFetchData.Name = "btnFetchData";
-            this.btnFetchData.Size = new System.Drawing.Size(238, 33);
+            this.btnFetchData.Size = new System.Drawing.Size(111, 33);
             this.btnFetchData.TabIndex = 6;
             this.btnFetchData.Text = "Fetch Data";
             this.btnFetchData.UseVisualStyleBackColor = false;
@@ -148,7 +149,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(203, 431);
+            this.label2.Location = new System.Drawing.Point(332, 431);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(309, 26);
             this.label2.TabIndex = 7;
@@ -199,6 +200,7 @@
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmHome";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Payment Gateway Testing";

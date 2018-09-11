@@ -304,6 +304,14 @@ namespace PaymentGatewayTestingTool
                             populateResult<Ezidebit.EziResponseOfstring>();
                             break;
 
+                        case ActionType.GetCustomerDetails:
+                            returnData = _pgAPIReference.GetCustomerDetails(_digitalKey,
+                                inputValues[0],
+                                inputValues[1]
+                            );
+                            populateResult<Ezidebit.EziResponseOfCustomerDetailsTHgMB7oL>();
+                            break;
+
                         case ActionType.EditCustomerDetails:
                             returnData = _pgAPIReference.EditCustomerDetails(_digitalKey,
                                 inputValues[0],
@@ -344,7 +352,7 @@ namespace PaymentGatewayTestingTool
                                 inputValues[2],
                                 inputValues[3],
                                 inputValues[4],
-                                inputValues[5]
+                                Convert.ToInt32(inputValues[5])
                             );
                             populateResult<Ezidebit.EziResponseOfArrayOfCustomerTHgMB7oL>();
                             break;
